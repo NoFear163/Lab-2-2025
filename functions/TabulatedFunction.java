@@ -40,6 +40,14 @@ public class TabulatedFunction {
             return Double.NaN;
         }
 
+        // Сравнение с машинным эпсилоном
+        final double eps = 1e-10;
+        for (int i = 0; i < pointsCount; i++) {
+            if (Math.abs(points[i].getX() - x) <= eps) {
+                return points[i].getY();
+            }
+        }
+
         // Поиск интервала
         int i = 0;
         while (i < pointsCount && points[i].getX() < x) i++;
